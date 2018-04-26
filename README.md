@@ -1,5 +1,6 @@
 # random-server-stuff
-just a collection of tools i made for regular use or one of use
+just a collection of random tools.  
+Some of or most of these tools are unused now and old!  
 
 ### AutoVM
 
