@@ -1,0 +1,2 @@
+# Random scripts for cjdns
+
