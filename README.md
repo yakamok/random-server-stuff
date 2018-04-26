@@ -17,4 +17,8 @@ was written to be used on a crappy godaddy host for a friend.
 
 ### RSS Feed Check & Stats
 
-This program used to check rss feeds from members of our IRC group and generate stats on how often we posted average word count ...etc, then it would determine if we were lazy or not.
+This program used to check rss feeds from members of our IRC group and generate stats on how often we posted average word count ...etc, then it would determine if we were lazy or not.  
+
+### WP-post-2-md
+
+Needed to convert the xml export of all posts from wordpress to markdown to use on my new site  
