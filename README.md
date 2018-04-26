@@ -2,6 +2,10 @@
 just a collection of random tools.  
 Some of or most of these tools are unused now and old!  
 
+### dns monitor
+
+I use this to see what my deivces are doing on the network.  
+
 ### AutoVM
 
 simple automation of vm creation and deletion on KVM  
