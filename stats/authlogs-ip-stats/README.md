@@ -4,4 +4,4 @@ Quick Script to fetch a list of failed attempts from /var/log/auth.log and then 
 
 Outputs stats as follows:
 
-![stats]()
+![stats](https://github.com/yakamok/random-server-stuff/blob/master/stats/authlogs-ip-stats/iploc.png)
