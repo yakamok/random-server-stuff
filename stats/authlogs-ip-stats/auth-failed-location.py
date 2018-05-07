@@ -63,6 +63,7 @@ def get_ips_from_auth_log():
 		ip_list_raw = [x.split()[-1].strip() for x in handle.readlines() if "Invalid" in x and "from" in x]
 
 	ip_list = []
+	#need to clean out duplicates here
 	[ip_list.append(x) for x in ip_list_raw if x not in ip_list]
 	return ip_list
 
