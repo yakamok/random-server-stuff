@@ -26,3 +26,7 @@ This program used to check rss feeds from members of our IRC group and generate 
 ### WP-post-2-md
 
 Needed to convert the xml export of all posts from wordpress to markdown to use on my new site  
+
+### authlogs-ip-stats
+
+Generate stats from failed auth attempts in /var/log/auth.log and fetching locations based on IP address  
