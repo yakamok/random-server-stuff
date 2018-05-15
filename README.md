@@ -34,3 +34,7 @@ Generate stats from failed auth attempts in /var/log/auth.log and fetching locat
 ### load average alert - loadavg-alert.py
 
 Checks load average and notifys via email when its too high
+
+### virsh-to-json.py
+
+takes multiple files from "virsh list --all > hostname"  and parses them and counts the states per host then dumps to a json file. 
