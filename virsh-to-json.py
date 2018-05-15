@@ -41,8 +41,6 @@ for x in host_ip_list:
 	except:
 		failed_connections.append(x)
 
-print for_json_dict 
-
 #write failed to parse files to file
 if len(failed_connections) > 0:
 	print "failed to connect to host(s), please check fail-conns.log"
