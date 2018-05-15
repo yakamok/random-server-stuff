@@ -3,29 +3,26 @@ import glob
 import json
 import sys
 import os
+import paramiko
 
-host_results_dir = "" #put absolute path to output files here 
-
-if os.path.exists(host_results_dir) == False:
-	print "no dir path has been set"
-	sys.exit(0)
-#grabbing all the files in host_results_dir
-hosts_list = [x.replace(host_results_dir,'') for x in glob.glob(host_results_dir + "*")]
-
-#if nothing is found exit
-if len(hosts_list) == 0:
-	print "no files found"
-	sys.exit(0)
-
+username = 'root' #make sure the correct keys are available
+cmd = 'virsh list --all'
 for_json_dict = {}
-failed_files = []
+failed_connections = []
+hosts_file = "/path/to/host-list"
 
-#everything happens here
-for x in hosts_list:
-	#open host file and clean it up, remove first 2 lines
+with open(host_file,"r") as handle:
+	host_ip_list = [x.strip() for x in handle.readlines()]
+
+for x in host_ip_list:
+	#establish ssh connection
 	try:
-		with open(host_results_dir + x,"r") as handle:
-			data = [f.strip() for f in handle.readlines()[2:]]
+		ssh = paramiko.SSHClient()
+		ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		ssh.connect(x,username=username)
+		ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)#command being sent
+
+		data = [f.strip() for f in ssh_stdout.readlines()[2:]]
 		data.pop(len(data) -1)
 
 		state_dict = {}
@@ -41,15 +38,16 @@ for x in hosts_list:
 			else:
 				temp_dict[value] += 1
 			for_json_dict[x] = temp_dict
-
 	except:
-		failed_files.append(x)
+		failed_connections.append(x)
+
+print for_json_dict 
 
 #write failed to parse files to file
-if len(failed_files) > 0:
-	print "some files failed to be parsed, please check: failed-files log"
-	with open("failed-files","w") as handle:
-		[handle.write(x + "\n") for x in failed_files]
+if len(failed_connections) > 0:
+	print "failed to connect to host(s), please check fail-conns.log"
+	with open("failed-conns.log","w") as handle:
+		[handle.write(x + "\n") for x in failed_connections]
 
 #now dump everything into a json file
 with open("host-stats.json","w") as handle:
