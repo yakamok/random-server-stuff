@@ -34,7 +34,7 @@ for x in host_ip_list:
 	try:
 		ssh = paramiko.SSHClient()
 		ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-		ssh.connect(x,username=username)
+		ssh.connect(x,username=username,timeout=10)
 		
 		ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)#command being sent
 	 	parse_output(ssh_stdout.readlines()[2:])
