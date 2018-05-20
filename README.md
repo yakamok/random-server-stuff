@@ -36,4 +36,8 @@ Generate stats from failed auth attempts in /var/log/auth.log and fetching locat
 Checks load average and notifys via email when its too high
 
 ### virsh-to-json.py
-Runs "virsh list --all" via ssh and parses the output and counts the states per host then dumps to a json file. 
+Runs "virsh list --all" via ssh and parses the output and counts the states per host then dumps to a json file.  
+
+### dnsmasq-blocklist.py
+
+Simple program to accept piped lists of domains that need to be blocked and the added to blocklist.conf in /etc/dnsmasq.d/, Usage: cat list-of-domains.txt | python dnsmasq-blocklist.py  
