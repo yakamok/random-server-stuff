@@ -1,6 +1,6 @@
 #/usr/bin/python
 #take file list of domains and add them to the block list in dnsmasq.d/blacklist.conf
-#this program assume you have setup dnsmasq as a router and is all installed and configured
+#this program assumes you have setup dnsmasq as a router and is all installed and configured
 
 import sys
 import os
@@ -18,6 +18,7 @@ if getpass.getuser() == "root":
     if not os.path.exists(dnsmasq_config_dir):
         print "Creating: " + dnsmasq_config_dir
         os.mkdir(dnsmasq_config_dir)
+
         if os.path.exists(dnsmasq_config_dir + config_file) != True:
             print "no config file found, creating now"
             open(dnsmasq_config_dir + config_file, 'w').close()
@@ -44,13 +45,16 @@ if getpass.getuser() == "root":
                 [handle.write("address=/" + x + "/" + point_To + "\n") for x in final_List]
                 print str((len(final_List) - len(current_List)))\
                             + " original entries have been added"
+
                 print str(len(final_List)) + " now in blocklist"
 
             #reload dnsmasq so it uses the updated list
             print "reloading dnsmasq..."
+
             process = subprocess.Popen("killall -s SIGHUP dnsmasq", shell=True,\
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             out, err = process.communicate()
+
             if err != None:
                 print "error " + err
             else:
