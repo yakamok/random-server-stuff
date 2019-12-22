@@ -19,14 +19,6 @@ Poorly implemented experimental decentralised dns system for fun(do not use this
 quick script to find and backup wordpress databases, this could be done much better by just backing up the database its self.
 was written to be used on a crappy godaddy host for a friend.  
 
-### RSS Feed Check & Stats - feed-check.py
-
-This program used to check rss feeds from members of our IRC group and generate stats on how often we posted average word count ...etc, then it would determine if we were lazy or not.  
-
-### Wordpress xml export to markdown - WP-post-2-md.py
-
-Needed to convert the xml export of all posts from wordpress to markdown to use on my new site  
-
 ### Simple Stats showing invalid login attempts in auth.log - authlogs-ip-stats
 
 Generate stats from failed auth attempts in /var/log/auth.log and fetching locations based on IP address  
